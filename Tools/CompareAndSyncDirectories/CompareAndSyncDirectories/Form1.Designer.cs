@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Apple",
-            "Pie",
-            "Tart"}, -1);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblSrcDir = new System.Windows.Forms.Label();
             this.txtbxSrcDir = new System.Windows.Forms.TextBox();
@@ -44,21 +40,19 @@
             this.btnBrwsDstDir = new System.Windows.Forms.Button();
             this.btnCompare = new System.Windows.Forms.Button();
             this.listViewSrcFiles = new System.Windows.Forms.ListView();
-            this.colHdrLstVwSrcFDiff = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colHdrLstVwSrcFName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colHdrLstVwSrcFPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.item1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.item2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.item3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.subitem31ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.subitem32ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colHdrLstvwSrcFDiff = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHdrLstvwSrcFName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHdrLstvwScrFModDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHdrLstvwSrcFSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHdrLstvwSrcFPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewDestFiles = new System.Windows.Forms.ListView();
+            this.colHdrLstvwDestFDiff = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHdrLstvwDestFName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHdrLstvwDestFModDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHdrLstvwDestFSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHdrLstvwDestFPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnSyncDest2Src = new System.Windows.Forms.Button();
             this.btnSyncSrc2Dest = new System.Windows.Forms.Button();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSrcDir
@@ -128,7 +122,7 @@
             // 
             // btnCompare
             // 
-            this.btnCompare.Location = new System.Drawing.Point(283, 128);
+            this.btnCompare.Location = new System.Drawing.Point(283, 121);
             this.btnCompare.Name = "btnCompare";
             this.btnCompare.Size = new System.Drawing.Size(102, 23);
             this.btnCompare.TabIndex = 6;
@@ -139,133 +133,122 @@
             // listViewSrcFiles
             // 
             this.listViewSrcFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colHdrLstVwSrcFDiff,
-            this.colHdrLstVwSrcFName,
-            this.colHdrLstVwSrcFPath});
-            this.listViewSrcFiles.ContextMenuStrip = this.contextMenuStrip1;
+            this.colHdrLstvwSrcFDiff,
+            this.colHdrLstvwSrcFName,
+            this.colHdrLstvwScrFModDate,
+            this.colHdrLstvwSrcFSize,
+            this.colHdrLstvwSrcFPath});
             this.listViewSrcFiles.FullRowSelect = true;
             this.listViewSrcFiles.GridLines = true;
-            this.listViewSrcFiles.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listViewSrcFiles.Location = new System.Drawing.Point(15, 172);
+            this.listViewSrcFiles.Location = new System.Drawing.Point(12, 159);
             this.listViewSrcFiles.Name = "listViewSrcFiles";
             this.listViewSrcFiles.Size = new System.Drawing.Size(369, 118);
             this.listViewSrcFiles.TabIndex = 8;
             this.listViewSrcFiles.UseCompatibleStateImageBehavior = false;
             this.listViewSrcFiles.View = System.Windows.Forms.View.Details;
+            this.listViewSrcFiles.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listViews_ItemSelectionChanged);
             // 
-            // colHdrLstVwSrcFDiff
+            // colHdrLstvwSrcFDiff
             // 
-            this.colHdrLstVwSrcFDiff.Text = "Difference";
-            this.colHdrLstVwSrcFDiff.Width = 82;
+            this.colHdrLstvwSrcFDiff.Text = "Difference";
+            this.colHdrLstvwSrcFDiff.Width = 75;
             // 
-            // colHdrLstVwSrcFName
+            // colHdrLstvwSrcFName
             // 
-            this.colHdrLstVwSrcFName.Text = "File Name";
-            this.colHdrLstVwSrcFName.Width = 123;
+            this.colHdrLstvwSrcFName.Text = "File Name";
+            this.colHdrLstvwSrcFName.Width = 83;
             // 
-            // colHdrLstVwSrcFPath
+            // colHdrLstvwScrFModDate
             // 
-            this.colHdrLstVwSrcFPath.Text = "File Path";
-            this.colHdrLstVwSrcFPath.Width = 176;
+            this.colHdrLstvwScrFModDate.Text = "Last Changed";
+            this.colHdrLstvwScrFModDate.Width = 80;
             // 
-            // contextMenuStrip1
+            // colHdrLstvwSrcFSize
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.item1ToolStripMenuItem,
-            this.item2ToolStripMenuItem,
-            this.item3ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.colHdrLstvwSrcFSize.Text = "Size";
+            this.colHdrLstvwSrcFSize.Width = 35;
             // 
-            // toolStripMenuItem1
+            // colHdrLstvwSrcFPath
             // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem2.Text = "toolStripMenuItem2";
-            // 
-            // item1ToolStripMenuItem
-            // 
-            this.item1ToolStripMenuItem.Name = "item1ToolStripMenuItem";
-            this.item1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.item1ToolStripMenuItem.Text = "item1";
-            // 
-            // item2ToolStripMenuItem
-            // 
-            this.item2ToolStripMenuItem.Name = "item2ToolStripMenuItem";
-            this.item2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.item2ToolStripMenuItem.Text = "item2";
-            // 
-            // item3ToolStripMenuItem
-            // 
-            this.item3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.subitem31ToolStripMenuItem,
-            this.subitem32ToolStripMenuItem});
-            this.item3ToolStripMenuItem.Name = "item3ToolStripMenuItem";
-            this.item3ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.item3ToolStripMenuItem.Text = "item3";
-            // 
-            // subitem31ToolStripMenuItem
-            // 
-            this.subitem31ToolStripMenuItem.Name = "subitem31ToolStripMenuItem";
-            this.subitem31ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.subitem31ToolStripMenuItem.Text = "subitem3.1";
-            // 
-            // subitem32ToolStripMenuItem
-            // 
-            this.subitem32ToolStripMenuItem.Name = "subitem32ToolStripMenuItem";
-            this.subitem32ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.subitem32ToolStripMenuItem.Text = "subitem3.2";
+            this.colHdrLstvwSrcFPath.Text = "File Path";
+            this.colHdrLstvwSrcFPath.Width = 136;
             // 
             // listViewDestFiles
             // 
-            this.listViewDestFiles.Location = new System.Drawing.Point(16, 343);
+            this.listViewDestFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colHdrLstvwDestFDiff,
+            this.colHdrLstvwDestFName,
+            this.colHdrLstvwDestFModDate,
+            this.colHdrLstvwDestFSize,
+            this.colHdrLstvwDestFPath});
+            this.listViewDestFiles.FullRowSelect = true;
+            this.listViewDestFiles.GridLines = true;
+            this.listViewDestFiles.Location = new System.Drawing.Point(12, 319);
             this.listViewDestFiles.Name = "listViewDestFiles";
-            this.listViewDestFiles.Size = new System.Drawing.Size(369, 74);
+            this.listViewDestFiles.Size = new System.Drawing.Size(369, 118);
             this.listViewDestFiles.TabIndex = 9;
             this.listViewDestFiles.UseCompatibleStateImageBehavior = false;
+            this.listViewDestFiles.View = System.Windows.Forms.View.Details;
+            this.listViewDestFiles.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listViews_ItemSelectionChanged);
+            // 
+            // colHdrLstvwDestFDiff
+            // 
+            this.colHdrLstvwDestFDiff.Text = "Difference";
+            this.colHdrLstvwDestFDiff.Width = 75;
+            // 
+            // colHdrLstvwDestFName
+            // 
+            this.colHdrLstvwDestFName.Text = "File Name";
+            this.colHdrLstvwDestFName.Width = 83;
+            // 
+            // colHdrLstvwDestFModDate
+            // 
+            this.colHdrLstvwDestFModDate.Text = "Last Changed";
+            this.colHdrLstvwDestFModDate.Width = 80;
+            // 
+            // colHdrLstvwDestFSize
+            // 
+            this.colHdrLstvwDestFSize.Text = "Size";
+            this.colHdrLstvwDestFSize.Width = 35;
+            // 
+            // colHdrLstvwDestFPath
+            // 
+            this.colHdrLstvwDestFPath.Text = "File Path";
+            this.colHdrLstvwDestFPath.Width = 138;
             // 
             // btnSyncDest2Src
             // 
             this.btnSyncDest2Src.Enabled = false;
             this.btnSyncDest2Src.Image = ((System.Drawing.Image)(resources.GetObject("btnSyncDest2Src.Image")));
             this.btnSyncDest2Src.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSyncDest2Src.Location = new System.Drawing.Point(205, 296);
+            this.btnSyncDest2Src.Location = new System.Drawing.Point(205, 283);
             this.btnSyncDest2Src.Name = "btnSyncDest2Src";
             this.btnSyncDest2Src.Size = new System.Drawing.Size(70, 29);
             this.btnSyncDest2Src.TabIndex = 11;
             this.btnSyncDest2Src.Text = "Sync";
             this.btnSyncDest2Src.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSyncDest2Src.UseVisualStyleBackColor = true;
+            this.btnSyncDest2Src.Click += new System.EventHandler(this.btnSync_click);
             // 
             // btnSyncSrc2Dest
             // 
             this.btnSyncSrc2Dest.Enabled = false;
             this.btnSyncSrc2Dest.Image = ((System.Drawing.Image)(resources.GetObject("btnSyncSrc2Dest.Image")));
             this.btnSyncSrc2Dest.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSyncSrc2Dest.Location = new System.Drawing.Point(101, 296);
+            this.btnSyncSrc2Dest.Location = new System.Drawing.Point(101, 283);
             this.btnSyncSrc2Dest.Name = "btnSyncSrc2Dest";
             this.btnSyncSrc2Dest.Size = new System.Drawing.Size(70, 29);
             this.btnSyncSrc2Dest.TabIndex = 10;
             this.btnSyncSrc2Dest.Text = "Sync";
             this.btnSyncSrc2Dest.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnSyncSrc2Dest.UseVisualStyleBackColor = true;
+            this.btnSyncSrc2Dest.Click += new System.EventHandler(this.btnSync_click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 421);
+            this.ClientSize = new System.Drawing.Size(396, 443);
             this.Controls.Add(this.btnSyncDest2Src);
             this.Controls.Add(this.btnSyncSrc2Dest);
             this.Controls.Add(this.listViewDestFiles);
@@ -280,7 +263,6 @@
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "Form1";
             this.Text = "Compare & Sync";
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,19 +281,18 @@
         private System.Windows.Forms.Button btnCompare;
         private System.Windows.Forms.ListView listViewSrcFiles;
         private System.Windows.Forms.ListView listViewDestFiles;
-        private System.Windows.Forms.ColumnHeader colHdrLstVwSrcFName;
-        private System.Windows.Forms.ColumnHeader colHdrLstVwSrcFPath;
         private System.Windows.Forms.Button btnSyncDest2Src;
-        private System.Windows.Forms.ColumnHeader colHdrLstVwSrcFDiff;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem item1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem item2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem item3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem subitem31ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem subitem32ToolStripMenuItem;
         private System.Windows.Forms.Button btnSyncSrc2Dest;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwSrcFDiff;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwSrcFName;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwScrFModDate;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwSrcFSize;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwSrcFPath;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwDestFDiff;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwDestFName;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwDestFModDate;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwDestFSize;
+        private System.Windows.Forms.ColumnHeader colHdrLstvwDestFPath;
     }
 }
 

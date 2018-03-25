@@ -8,3 +8,13 @@ C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Vis
 C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\CompareAndSyncDirectories\CompareAndSyncDirectories\bin\Debug\CompareAndSyncDirectories.pdb
 C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\CompareAndSyncDirectories\CompareAndSyncDirectories\obj\Debug\CompareAndSyncDirectories.exe
 C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\CompareAndSyncDirectories\CompareAndSyncDirectories\obj\Debug\CompareAndSyncDirectories.pdb
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\obj\Debug\CompareAndSyncDirectories.csprojResolveAssemblyReference.cache
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\obj\Debug\CompareAndSyncDirectories.Form1.resources
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\obj\Debug\CompareAndSyncDirectories.Properties.Resources.resources
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\obj\Debug\CompareAndSyncDirectories.csproj.GenerateResource.Cache
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\obj\Debug\CompareAndSyncDirectories.csproj.CoreCompileInputs.cache
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\obj\Debug\CompareAndSyncDirectories.exe
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\obj\Debug\CompareAndSyncDirectories.pdb
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\bin\Debug\CompareAndSyncDirectories.exe.config
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\bin\Debug\CompareAndSyncDirectories.exe
+C:\Users\marashid\Documents\Personal_Stuff\Personal Training and Development\Visual Studio Projects\Tools\CompareAndSyncDirectories\CompareAndSyncDirectories\bin\Debug\CompareAndSyncDirectories.pdb

@@ -41,12 +41,33 @@ namespace CompareAndSyncDirectories
             return unmatchedSrcDestFylesDict;
         }
 
+        public void removeElementFromDifferingFylesDict(string enquiringfylePath)
+        {
+           foreach (KeyValuePair<KeyValuePair<Fyle, Fyle>, string> unmatchedSrcDestFylesKey in unmatchedSrcDestFylesDict)
+            {
+                Fyle differingScrFyle = unmatchedSrcDestFylesKey.Key.Key;
+                Fyle differingDestFyle = unmatchedSrcDestFylesKey.Key.Value;
+
+                if (differingScrFyle != null && enquiringfylePath.Equals(differingScrFyle.AbsoluteFylePath))
+                {
+                    unmatchedSrcDestFylesDict.Remove(unmatchedSrcDestFylesKey.Key);
+                    return;
+                }
+                else if (differingDestFyle != null && enquiringfylePath.Equals(differingDestFyle.AbsoluteFylePath))
+                {
+                    unmatchedSrcDestFylesDict.Remove(unmatchedSrcDestFylesKey.Key);
+                    return;
+                }
+            }
+            
+        }
+
         public Fyle getPartnerFyleFromAFylePath(string enquiringfylePath)
         {
-            foreach (KeyValuePair<KeyValuePair<Fyle, Fyle>, string> unmatchedSrcDestFyle in unmatchedSrcDestFylesDict)
+            foreach (KeyValuePair<KeyValuePair<Fyle, Fyle>, string> unmatchedSrcDestFylesKey in unmatchedSrcDestFylesDict)
             {
-                Fyle differingScrFyle = unmatchedSrcDestFyle.Key.Key;
-                Fyle differingDestFyle = unmatchedSrcDestFyle.Key.Value;
+                Fyle differingScrFyle = unmatchedSrcDestFylesKey.Key.Key;
+                Fyle differingDestFyle = unmatchedSrcDestFylesKey.Key.Value;
 
                 if (differingScrFyle != null && enquiringfylePath.Equals(differingScrFyle.AbsoluteFylePath))
                     return differingDestFyle;

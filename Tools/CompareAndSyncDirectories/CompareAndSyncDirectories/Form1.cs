@@ -197,13 +197,6 @@ namespace CompareAndSyncDirectories
                     throw new Exception("No selected item found in the list view");
                 }
 
-                ///for renamed fyles, replace the destfyle with (destfyle parent path + replacing srcfyle name)
-                ///for modified fyles, copy replacing srcfyle to corresponding destfyle with override flag
-
-                ///but how do we get destfyle path as it doesn't still exist?
-                ///one way may be to get relative path of the srcfyle from 'selected src directory' and adding this to the 'selected dest directory'
-                ///
-
                 foreach (ListViewItem selectedItem in selectedListvwItemsCollection)
                 {
                     string difference = selectedItem.SubItems[0].Text;
@@ -213,44 +206,57 @@ namespace CompareAndSyncDirectories
 
                     if (difference.Equals("Renamed") && partnerFyle != null)
                     {
-                        Console.WriteLine("'{0} [{1}]' will replace '{2}'", string.Concat(partnerFyle.FyleParentDirectory, selectedFyleName), difference, partnerFyle.AbsoluteFylePath);
-                        //File.Move(string.Concat(partnerFyle.FyleParentDirectory, selectedFyleName), partnerFyle.AbsoluteFylePath);
+                        ///for renamed fyles, replace the partner fyle name with selected fyle name i.e.(partner fyle parent path + selected fyle name)
+                        Console.WriteLine("'{0} ' will BE REPLACED WITH '{1} [{2}]'", partnerFyle.AbsoluteFylePath, string.Concat(partnerFyle.FyleParentDirectory, selectedFyleName), difference);
+                        File.Move(partnerFyle.AbsoluteFylePath, string.Concat(partnerFyle.FyleParentDirectory, selectedFyleName));
                     }
                     else if (difference.Contains("Modified") && partnerFyle != null)
                     {
-                        string backupPath = "";
-                        if (selectedListvwItemsCollection.Equals(listViewSrcFiles.SelectedItems))
-                            backupPath = string.Concat(Path.GetDirectoryName(".\\"), Path.DirectorySeparatorChar.ToString(), "SRCFOLDER", selectedFylePath.Substring(sourceDirectory.Length));
-                        else if (selectedListvwItemsCollection.Equals(listViewDestFiles.SelectedItems))
-                            backupPath = string.Concat(Path.GetDirectoryName(".\\"), Path.DirectorySeparatorChar.ToString(), "DESTFOLDER", selectedFylePath.Substring(destinationDirectory.Length));
+                        //string backupPath = "";
+                        //if (selectedListvwItemsCollection.Equals(listViewSrcFiles.SelectedItems))
+                        //    backupPath = string.Concat(Path.GetDirectoryName(".\\"), Path.DirectorySeparatorChar.ToString(), "SRCFOLDER", selectedFylePath.Substring(sourceDirectory.Length));
+                        //else if (selectedListvwItemsCollection.Equals(listViewDestFiles.SelectedItems))
+                        //    backupPath = string.Concat(Path.GetDirectoryName(".\\"), Path.DirectorySeparatorChar.ToString(), "DESTFOLDER", selectedFylePath.Substring(destinationDirectory.Length));
+                        //Console.WriteLine("Replace file will be backed up in {0}", backupPath);
 
-                        Console.WriteLine("'{0} [{1}]' will replace '{2}'", selectedFylePath, difference, partnerFyle.AbsoluteFylePath);
-                        Console.WriteLine("Replace file will be backed up in {0}", backupPath);
+                        ///for modified fyles, copy selected fyle path to corresponding partner fyle path with override flag on
+                        Console.WriteLine("'{0} [{1}]' WILL REPLACE '{2}'", selectedFylePath, difference, partnerFyle.AbsoluteFylePath);
                         File.Copy(selectedFylePath, partnerFyle.AbsoluteFylePath, true);
                     }
                     else if (difference.Equals("New"))
                     {
+                        ///for new fyles, we first determine the copying path for the new fyle based on its source and destination
                         string copyingPathForNewFyle = string.Empty;
+                        ///if src fyle is being copied to dest directory, the copying path for the new fyle is (dest directory + src fyle's relative path from src directory)
                         if (selectedListvwItemsCollection.Equals(listViewSrcFiles.SelectedItems))
                             copyingPathForNewFyle = string.Concat(destinationDirectory, selectedFylePath.Substring(sourceDirectory.Length));
+                        ///if dest fyle is being copied to src directory, the copying path for the new fyle is (src directory + dest fyle's relative path from dest directory)
                         else if (selectedListvwItemsCollection.Equals(listViewDestFiles.SelectedItems))
                             copyingPathForNewFyle = string.Concat(sourceDirectory, selectedFylePath.Substring(destinationDirectory.Length));
 
+                        if (!Directory.Exists(Path.GetDirectoryName(copyingPathForNewFyle)))
+                            Directory.CreateDirectory(Path.GetDirectoryName(copyingPathForNewFyle));
+
                         Console.WriteLine("'{0} [{1}]' will be copied into '{2}'", selectedFylePath, difference, copyingPathForNewFyle);
                         File.Copy(selectedFylePath, copyingPathForNewFyle);
+
                     }
                     else
+                    {
                         throw new Exception("No partner fyle matched the selected item in the listview");
+                    }
+
+                    ///remove the item from Dictionary<Key<selected fyle, partner fyle>, "difference">, so when the listview is repopulated, it's excluded from the list
+                    fh.removeElementFromDifferingFylesDict(selectedFylePath);
                 }
 
-                btnCompare_Click(null, null);
+                populateListView(fh.getDifferingFylesDict());
             }
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message, "Error");
                 Console.WriteLine(ex.Message);
             }
-
         }
     }
 }
